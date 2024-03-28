@@ -165,5 +165,20 @@ export const likeThePost = async (req, res) => {
 }
 
 export const addCommentOnPost = async (req, res) => {
-    res.send("Comment On Post")
+    const data = req.body;
+    console.log(data);
+    try {
+        const post = await Posts.findById({_id: data.postId});
+        if(post){
+            const user = await User.findById({_id: data.userId});
+            post.postComments.push({username: user.username, comment: data.comment});
+            const result = await post.save();
+            if(result){
+                res.status(202).json({message: "Comment Added", comments: result.postComments});
+            }
+        }    
+    } 
+    catch (error) {
+        console.log(error);
+    }
 }

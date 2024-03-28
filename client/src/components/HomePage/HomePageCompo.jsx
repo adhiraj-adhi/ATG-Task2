@@ -5,7 +5,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { FaHeart } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
 import { FaShareAlt } from "react-icons/fa";
-import { getAllPosts, updateLikeAPI } from '../../apis/postsAPI';
+import { getAllPosts, updateLikeAPI, userComment } from '../../apis/postsAPI';
 
 const HomePageCompo = () => {
     const location = useLocation();
@@ -55,6 +55,33 @@ const HomePageCompo = () => {
         }
     }
 
+    // handling comment feature:
+    const [commentData, setCommentData] = useState({ comment: "", postId: "", userId: "" });
+
+    const collectComment = (e) => {
+        setCommentData({ ...commentData, comment: e.target.value });
+    }
+
+    const handleComment = async (postId) => {
+        const newComment = { ...commentData, postId: postId, userId: data.id };
+        try {
+            const response = await userComment(newComment);
+            if (response.data.message) {
+                const index = allPosts.findIndex(post => post._id === postId);
+                if (index !== -1) {
+                    const updatedPosts = [...allPosts];
+                    updatedPosts[index].postComments = response.data.comments;
+                    setAllPosts(updatedPosts);
+                }
+            }
+            setCommentData({ comment: '', postId: '', userId: '' });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
     return (
         <>
             {
@@ -89,7 +116,6 @@ const HomePageCompo = () => {
                                     <div className="postsContainer">
                                         {
                                             allPosts.map((post) => {
-                                                console.log("POST", post);
                                                 return (
                                                     <div key={post.id} className="post">
                                                         {/* Check If image is present or not while db data fetching */}
@@ -108,8 +134,14 @@ const HomePageCompo = () => {
                                                                     <button><FaShareAlt /></button>
                                                                 </div>
                                                                 <div className="addComment">
-                                                                    <input type="text" placeholder='Comment...' />
-                                                                    <button>Comment</button>
+                                                                    <input
+                                                                        type="text"
+                                                                        name="comment"
+                                                                        placeholder='Comment...'
+                                                                        value={commentData.comment}
+                                                                        onChange={collectComment}
+                                                                    />
+                                                                    <button onClick={() => handleComment(post._id)}>Comment</button>
                                                                 </div>
                                                             </div>
                                                             <div className="comments">
@@ -119,7 +151,7 @@ const HomePageCompo = () => {
                                                                             {
                                                                                 post.postComments.map(postComment => {
                                                                                     return (
-                                                                                        <li key={postComment.username}><span style={{ fontWeight: "bold" }}>{postComment.username}:</span><br /> {postComment.comment}</li>
+                                                                                        <li key={postComment._id}><span style={{ fontWeight: "bold" }}>{postComment.username}:</span> {postComment.comment}</li>
                                                                                     )
                                                                                 })
                                                                             }
@@ -134,31 +166,6 @@ const HomePageCompo = () => {
                                                 )
                                             })
                                         }
-
-                                        {/* <div className="post">
-                                            <div className="image">
-                                                <img src="https://usv.edu/wp-content/uploads/2021/06/virtual-reality-vr-e1624313135975.jpg" alt="postImg" />
-                                            </div>
-                                            <div className='postDescription'>
-                                                <p className='postAbout'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi repellendus amet cumque assumenda quos ipsam quisquam, dignissimos, beatae magni perferendis vero illo eum obcaecati nostrum laboriosam maiores rerum magnam laborum!</p>
-                                                <div className="postUtils">
-                                                    <div className="buttonGroup">
-                                                        <button><AiFillLike /></button>
-                                                        <button><FaShareAlt /></button>
-                                                    </div>
-                                                    <div className="addComment">
-                                                        <input type="text" placeholder='Comment...' />
-                                                        <button>Comment</button>
-                                                    </div>
-                                                </div>
-                                                <div className="comments">
-                                                    <ul>
-                                                        <li><span style={{ fontWeight: "bold" }}>Username1:</span><br /> Comment1 Goes Here</li>
-                                                        <li><span style={{ fontWeight: "bold" }}>Username2:</span><br /> Comment2 Goes Here</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div> */}
                                     </div>
                                 </main>
                             )

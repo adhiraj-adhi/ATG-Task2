@@ -68,3 +68,13 @@ export const updateLikeAPI = async (data) => {
         console.log(error);
     }
 }
+
+// handling comment api:-
+export const userComment = async (data) => {
+    try {
+        const response = await axiosInstance.post("/comment", data);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+}
