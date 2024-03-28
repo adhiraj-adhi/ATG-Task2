@@ -1,0 +1,95 @@
+.formContainer{
+    width: 600px;
+    height: 400px;
+    box-shadow: 0 -2px 3px rgb(102, 102, 76);
+    /* background-image: url("https://www.hdwallpaperslife.com/wp-content/uploads/2017/02/mi_vr_headset-wide-1920x1080.jpg"); */
+    background-image: url("https://blog.uniquez.co/wp-content/uploads/2020/04/%D8%A7%D9%84%D9%88%D8%A7%D9%82%D8%B9-%D8%A7%D9%84%D8%A7%D9%81%D8%AA%D8%B1%D8%A7%D8%B6%D9%8A-vr.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+}
+
+.signInForm{
+    width: 100%;
+    display: flex;
+}
+
+.signInForm .form{
+    width: 55%;
+    height: 400px;
+    /* background-color: rgb(232, 232, 138); */
+    padding: 1rem 2rem;
+}
+
+.signInForm .form h3, .signUpForm h3{
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.signInForm .form form .fields{
+    margin-bottom: 0.6rem;
+}
+
+.signInForm .form form .fields label{
+    font-size: 0.9rem;
+}
+
+.signInForm .form form .fields input, 
+.signUpForm form .fields .field input, 
+.signUpForm form .fields .field select, 
+.signUpForm form .fields .field textarea{
+    width: 85%;
+    outline: none;
+    border: none;
+    padding: 0.2rem 0.7rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+.signInForm .form form input[type="submit"], .signUpForm form input[type="submit"]{
+    margin-top: 1rem;
+    outline: none;
+    border: none;
+    padding: 0.2rem 1rem;
+    border-radius: 5px;
+    background-color: #19a4f4;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.signInForm .utils{
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.signInForm .utils button, 
+.signUpForm button{
+    margin-top: 2rem;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.signInForm .utils button{
+    margin-bottom: 1rem;
+}
+
+/* =========================================================== */
+.signUpForm{
+    padding: 1rem;
+}
+
+.signUpForm .formFields{
+    display: flex;
+}
+
+.signUpForm form .fields{
+    width: 50%;
+}
+
+.signUpForm form .fields .field label{
+    font-size: 0.9rem;
+}

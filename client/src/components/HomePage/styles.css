@@ -1,0 +1,145 @@
+.homePageContainer{
+    width: 100%;
+    position: relative;
+}
+
+.userDetails{
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    /* background-color: red; */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2), -2px 0 2px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.userDetails .profilePic img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.2rem;
+}
+
+.userDetails .userInfo{
+    padding: 0 1rem;
+}
+
+.userDetails .userInfo .username{
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+} 
+
+.userDetails .userInfo .about{
+    font-size: 0.8rem;
+    text-align: justify;
+    margin-bottom: 0.75rem;
+}
+
+.userDetails .userInfo ul{
+    list-style: none;
+}
+
+.userDetails .userInfo ul li{
+    font-size: 0.8rem;
+}
+
+.userDetails .profileDirector{
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userDetails .profileDirector button{
+    padding: 0.5rem;
+    border: 1px solid gray;
+    background-color: #19a4f4;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 2.5px;
+    width: 70%;
+}
+
+.feedContainer{
+    width: 65%;
+    margin-left: 27%;
+}
+
+.feedContainer .postsContainer{
+    padding: 0 2rem;
+}
+
+.feedContainer .postsContainer .post{
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.feedContainer .postsContainer .post .image{
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.feedContainer .postsContainer .post .image img{
+    width: 100%;
+    object-fit: cover;
+}
+.feedContainer .postsContainer .post .postDescription{
+    padding: 0 0.2rem;
+}
+.feedContainer .postsContainer .post .postDescription .postAbout{
+    font-size: 0.75rem;
+    text-align: justify;
+    margin-bottom: 0.75rem;
+}
+
+.feedContainer .postsContainer .post .postUtils{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.feedContainer .postsContainer .post .postUtils .buttonGroup button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.feedContainer .postsContainer .post .postUtils .addComment input{
+    outline: none;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+}
+
+.feedContainer .postsContainer .post .postUtils .addComment button{
+    outline: none;
+    border: none;
+    background-color: #19a4f4;
+    padding: 0.3rem 0.7rem;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+.feedContainer .postsContainer .post .comments ul{
+    list-style: none;
+}
+
+.feedContainer .postsContainer .post .comments ul li{
+    font-size: 0.7rem;
+}

@@ -1,0 +1,28 @@
+=> Status Codes:
+============================
+(1) Creation Successful: 201
+
+(2) Bad Request (This status code indicates that the server could not understand the request 
+    due to invalid syntax or other client-side errors. It's used when the request message lacks 
+    necessary information or contains invalid data): 400
+
+(3) Unauthorized (This status code indicates that the request has not been applied because it 
+    lacks valid authentication credentials for the target resource. It's used when the client 
+    needs to authenticate itself to perform the request): 401
+
+(4) Not Found (This status code indicates that the server has not found the requested resource. 
+    It's used when the specified URL does not correspond to an existing endpoint): 404
+
+(5) Internal Server Error (This is a generic error message indicating that something unexpected 
+    went wrong on the server side. It's often used when the server encounters an unhandled 
+    exception or encounters an error that prevents it from fulfilling the request): 500
+
+(6) Not Implemented (This status code indicates that the server does not support the functionality 
+    required to fulfill the request. It's typically used when the server does not recognize the 
+    request method or lacks the ability to fulfill the request due to not implementing a required 
+    feature): 501
+
+(7) Service Unavailable (This status code indicates that the server is temporarily unable to handle 
+    the request due to maintenance, overloading, or other temporary conditions. It's often used 
+    to indicate that the server is overloaded or undergoing maintenance and cannot handle the request 
+    at the moment): 503

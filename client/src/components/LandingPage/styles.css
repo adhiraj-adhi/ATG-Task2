@@ -1,0 +1,75 @@
+header{
+    padding: 0.3rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.09rem;
+    box-shadow: 4px 5px 7px rgba(0, 0, 0, 0.2);
+}
+
+header h3{
+    font-weight: 300;
+    font-size: 2rem;  
+}
+
+header button{
+    outline: none;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    background-color: #19a4f4;
+    border-radius: 4px;
+}
+
+.posts{
+    padding: 0.3rem 1rem;
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 4px 0px 7px rgba(0, 0, 0, 0.2);
+}
+
+.posts .post{
+    width: 30%;
+    height: 300px;
+    margin-right: 5%;
+    overflow: hidden;
+    padding: 0.4rem;
+    margin-bottom: 2rem;
+    /* background-color: rgb(235, 235, 140); */
+    background-color: rgb(236, 236, 167);
+    box-shadow: 0px 1px 2px rgb(102, 102, 72);
+}
+
+.posts .post:nth-child(3n){
+    margin-right: 0%;
+}
+
+.posts .post img{
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.posts .post .username{
+    font-size: 0.9rem;
+}
+
+.posts .post .postContent{
+    font-size: 0.7rem;
+    margin-bottom: 0.35rem;
+}
+
+/* .posts .post p:nth-child(3)::after{
+    background-color: yellow;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+} */
+
+.posts .post button{
+    outline: none;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    background-color: #19a4f4;
+    border-radius: 4px;
+}
