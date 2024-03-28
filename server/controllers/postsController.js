@@ -70,8 +70,9 @@ export const createAPost = async (req, res) => {
     }
 
     try {
-        const result = await Posts.create(post);
         const user = await User.findById({ _id: data.id });
+        post = {...post, postCreator: user.username}
+        const result = await Posts.create(post);
         user.userPosts.push(result._id);
         const userUpdated = await user.save();
         if (result && userUpdated) {

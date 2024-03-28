@@ -203,7 +203,7 @@ const ProfilePageCompo = () => {
                                                                 ) : null
                                                             }
                                                             <div className='postDescription'>
-                                                                <p className='postAbout'>{post.postContent}</p>
+                                                                <p className='postAbout'><b>{post.postCreator}</b> : {post.postContent}</p>
                                                                 <div className="postUtils">
                                                                     <div className="buttonGroup" style={{ display: "flex", alignItems: "center" }}>
                                                                         <button onClick={() => updateLike(post._id)}><span style={{ fontSize: "0.9rem" }}>({post.postlikes.length})</span><AiFillLike /></button>

@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const postsSchema = mongoose.Schema({
+    postCreator: {
+        type: String,
+    },
     postImage: {
         type: String,
         default: ""
