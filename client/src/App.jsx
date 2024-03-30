@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import ForgotPass from './pages/ForgotPass';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     path: "/profile/:id",
     element: <ProfilePage />
   },
+  {
+    path: "//recoverPassword/:token",
+    element: <ForgotPass />
+  }
 ]);
 
 const App = () => {

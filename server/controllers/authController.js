@@ -1,5 +1,6 @@
 import User from '../db/models/userModel.js'
-
+import nodemailer from 'nodemailer';
+import jwt from 'jsonwebtoken';
 
 
 // REGISTER CONTROLLER
@@ -84,5 +85,70 @@ export const userLogin = async (req, res) => {
 
 // FORGOT PASSWORD CONTROLLER
 export const forgotPassword = async (req, res) => {
-    res.send("Forgot Password");
+    const email = req.body.email;
+    try {
+        const user = await User.findOne({email: email});
+        if(user) {
+            sendEmail(user._id, user.email, user.username)
+            res.status(200).json({ message: "We sent you a recovery email" });
+        } else {
+            res.json({message: "Email Not Registered"});
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+// function to send Verification Email 
+const sendEmail = (id, email, name) => {
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: process.env.Email,
+            pass: process.env.Pass
+        },
+    });
+
+    const token = jwt.sign({ id }, process.env.VERIFY_EMAIL, { expiresIn: '5m' })
+
+    const mailOptions = {
+        from: process.env.Email,
+        to: email,
+        subject: 'Verification Email',
+        html: `<p> Hello ${name}, to change your password please click on <a href="http://localhost:5173/recoverPassword/${token}">Change Password</a></p>`
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Email sent" + info.response);
+        }
+    });
+}
+
+export const changePassword = async (req, res) => {
+    console.log(req.body);
+    try {
+        const data = req.body.formData;
+        if (data.password === data.confPassword) {
+            let id;
+            jwt.verify(req.body.token, process.env.VERIFY_EMAIL, (err, decoded) => {
+                if (err) {
+                    res.json({message: "Link Has Been Tampered"})
+                }
+                // If verification is successful, 'decoded' will contain the payload
+                id = decoded.id;
+            })
+            const result = await User.findByIdAndUpdate(id, { password:data.password})
+            if(result){
+                res.status(200).json({message: "Updation Success"})
+            }
+        } else {
+            res.json({message: "Passwords do not match"})
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }

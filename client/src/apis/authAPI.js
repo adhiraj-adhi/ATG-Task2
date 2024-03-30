@@ -28,3 +28,24 @@ export const loginUser = async (data) => {
         console.error("Error creating user:", error);
     }
 }
+
+
+// api for sending mail
+export const forgotPasswordAPI = async(data) => {
+    try {
+        const response = await axiosInstance.post("/forgotPassword", data);
+        return response.data;
+    } catch (error) {
+        console.error(error)
+    }   
+}
+
+// API  for changing password
+export const recoverPassword = async(data) => {
+    try {
+        const response = await axiosInstance.post("/recoverPassword", data);
+        return response.data;
+    } catch (error) {
+        console.error(error)
+    }
+}

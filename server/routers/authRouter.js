@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, forgotPassword, userLogin } from '../controllers/authController.js';
+import { changePassword, createUser, forgotPassword, userLogin } from '../controllers/authController.js';
 const router = express.Router();
 import multer from 'multer';
 import path from 'path';
@@ -30,5 +30,6 @@ const upload = multer({ storage, fileFilter });
 router.post("/create", upload.single('profilePic'), createUser);
 router.post("/login", userLogin);
 router.post("/forgotPassword", forgotPassword);
+router.post("/recoverPassword", changePassword);
 
 export default router;

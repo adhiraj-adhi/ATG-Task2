@@ -93,3 +93,28 @@
 .signUpForm form .fields .field label{
     font-size: 0.9rem;
 }
+
+
+.forgotPassContainer{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(244, 244, 244, 0.178);
+    /* background-color: red; */
+}
+
+.forgotPass{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(199, 199, 122);
+    padding: 2rem 1rem;
+    border-radius: 5px;
+}
+
+.forgotPass input[type="submit"]{
+    cursor: pointer;
+}
